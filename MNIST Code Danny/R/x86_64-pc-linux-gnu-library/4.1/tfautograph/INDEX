@@ -1,0 +1,14 @@
+[[<-.tensorflow.python.ops.tensor_array_ops.TensorArray
+                        'TensorArray.write()'
+ag_if_vars              Specify 'tf.cond()' output structure when
+                        autographing 'if'
+ag_loop_vars            Specify loop variables
+ag_name                 Specify a tensor name
+ag_while_opts           specify 'tf.while_loop' options
+autograph               Autograph R code
+tf_assert               tf_assert
+tf_case                 tf.case
+tf_cond                 tf.cond
+tf_map                  'tf.map_fn()'
+tf_switch               tf.switch_case
+view_function_graph     Visualizes the generated graph

@@ -1,0 +1,70 @@
+AEI                     Augmented Expected Improvement
+AEI.grad                AEI's Gradient
+AKG                     Approximate Knowledge Gradient (AKG)
+AKG.grad                AKG's Gradient
+DiceOptim-package       Kriging-based optimization methods for computer
+                        experiments
+EGO.cst                 Sequential constrained Expected Improvement
+                        maximization and model re-estimation, with a
+                        number of iterations fixed in advance by the
+                        user
+EGO.nsteps              Sequential EI maximization and model
+                        re-estimation, with a number of iterations
+                        fixed in advance by the user
+EI                      Analytical expression of the Expected
+                        Improvement criterion
+EI.grad                 Analytical gradient of the Expected Improvement
+                        criterion
+EQI                     Expected Quantile Improvement
+EQI.grad                EQI's Gradient
+ParrConstraint          2D constraint function
+TREGO.nsteps            Trust-region based EGO algorithm.
+checkPredict            Prevention of numerical instability for a new
+                        observation
+crit_AL                 Expected Augmented Lagrangian Improvement
+crit_EFI                Expected Feasible Improvement
+crit_SUR_cst            Stepwise Uncertainty Reduction criterion
+critcst_optimizer       Maximization of constrained Expected
+                        Improvement criteria
+easyEGO                 User-friendly wrapper of the functions
+                        'fastEGO.nsteps' and 'TREGO.nsteps'. Generates
+                        initial DOEs and kriging models (objects of
+                        class 'km'), and executes 'nsteps' iterations
+                        of either EGO or TREGO.
+easyEGO.cst             EGO algorithm with constraints
+fastEGO.nsteps          Sequential EI maximization and model
+                        re-estimation, with a number of iterations
+                        fixed in advance by the user
+fastfun                 Fastfun function
+integration_design_cst
+                        Generic function to build integration points
+                        (for the SUR criterion)
+kriging.quantile        Kriging quantile
+kriging.quantile.grad   Analytical gradient of the Kriging quantile of
+                        level beta
+max_AEI                 Maximizer of the Augmented Expected Improvement
+                        criterion function
+max_AKG                 Maximizer of the Expected Quantile Improvement
+                        criterion function
+max_EI                  Maximization of the Expected Improvement
+                        criterion
+max_EQI                 Maximizer of the Expected Quantile Improvement
+                        criterion function
+max_crit                Maximization of the Expected Improvement
+                        criterion
+max_qEI                 Maximization of multipoint expected improvement
+                        criterion (qEI)
+min_quantile            Minimization of the Kriging quantile.
+noisy.optimizer         Optimization of homogenously noisy functions
+                        based on Kriging
+qEGO.nsteps             Sequential multipoint Expected improvement
+                        (qEI) maximizations and model re-estimation
+qEI                     Analytical expression of the multipoint
+                        expected improvement (qEI) criterion
+qEI.grad                Gradient of the multipoint expected improvement
+                        (qEI) criterion
+sampleFromEI            Sampling points according to the expected
+                        improvement criterion
+test_feas_vec           Test constraints violation (vectorized)
+update_km_noisyEGO      Update of one or two Kriging models when adding
+                        new observation

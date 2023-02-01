@@ -1,0 +1,12 @@
+ag_if_vars	ag_if_vars
+ag_loop_vars	ag_loop_vars
+ag_name	ag_name
+ag_while_opts	ag_while_opts
+autograph	autograph
+tf_assert	tf_assert
+tf_case	tf_case
+tf_cond	tf_cond
+tf_map	tf_map
+tf_switch	tf_switch
+view_function_graph	view_function_graph
+[[<-.tensorflow.python.ops.tensor_array_ops.TensorArray	sub-subset-.tensorflow.python.ops.tensor_array_ops.TensorArray

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<title>Compare Runs</title>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+{{{ jquery }}}
+
+{{{ materialize }}}
+
+{{{ material_icons }}}
+
+{{{ vue_js }}}
+
+{{{ c3 }}}
+
+{{{ metrics_charts }}}
+
+{{{ highlight_js }}}
+
+{{{ diff2html }}}
+
+{{{ dashboard }}}
+
+<style type="text/css">
+
+#compare-code {
+  margin-top: 15px;
+}
+
+@media only screen and (min-width: 601px) {
+.row .col:last-child {
+  padding-left: 0.2rem;
+}
+}
+</style>
+
+</head>
+
+<body>
+
+<div v-cloak id="vue-app">
+
+<navbar title="Compare Runs">
+  <span slot="right">### run_a.run_dir ###&nbsp;&nbsp;&nbsp;### run_b.run_dir ###</span>
+</navbar>
+
+<div class="container">
+
+<!-- Properties -->
+
+<side-by-side-property-cards
+  caption="Run"
+  v-bind:props_a="run_a.attributes"
+  v-bind:props_b="run_b.attributes">
+</side-by-side-property-cards>
+
+<side-by-side-property-cards
+  caption="Metrics"
+  v-bind:props_a="run_a.metrics"
+  v-bind:props_b="run_b.metrics">
+</side-by-side-property-cards>
+
+<side-by-side-property-cards
+  caption="Evaluation"
+  v-bind:props_a="run_a.evaluation"
+  v-bind:props_b="run_b.evaluation">
+</side-by-side-property-cards>
+
+<!-- FLAGS and source code diffs -->
+
+<code-diff v-for="(value, key) in diffs"
+  v-bind:filename="key"
+  v-bind:code_a="value.run_a"
+  v-bind:code_b="value.run_b">
+</code-diff>
+
+
+<!-- Training History -->
+
+<side-by-side>
+  <div slot="left">
+    <template v-if="run_a.history">
+    <card caption="History">
+    <div id="run_a_history"></div>
+    </card>
+    </template>
+  </div>
+  <div slot="right">
+    <template v-if="run_b.history">
+    <card caption="History">
+    <div id="run_b_history"></div>
+    </card>
+    </template>
+  </div>
+</side-by-side>
+
+
+<!-- Plot Output -->
+
+<side-by-side>
+  <div slot="left">
+    <template v-if="run_a.plots">
+    <card caption="Plots">
+    <plot-img v-for="plot in run_a.plots" v-bind:plot="plot"></plot-img>
+    </card>
+    </template>
+  </div>
+  <div slot="right">
+    <template v-if="run_b.plots">
+    <card caption="Plots">
+    <plot-img v-for="plot in run_b.plots" v-bind:plot="plot"></plot-img>
+    </card>
+    </template>
+  </div>
+</side-by-side>
+
+<!-- Console Output -->
+
+<code-diff
+  filename="Console"
+  v-bind:code_a="run_a.output"
+  v-bind:code_b="run_b.output">
+</code-diff>
+
+
+</div> <!-- /container -->
+
+</div> <!-- /app -->
+
+<script type="application/json" id="app-data">{{{ data }}}</script>
+
+<script type="application/javascript">
+
+// load app json
+var app_data_json = document.getElementById('app-data').innerHTML;
+var app_data = JSON.parse(app_data_json);
+
+// initialize app
+var app = new Vue({
+  el: '#vue-app',
+  data: app_data,
+  delimiters: ["###","###"]
+});
+
+// initialize metrics charts
+function init_charts(id, history) {
+  var c3_container = document.getElementById(id);
+  var charts = new MetricsCharts(c3_container, history, null, true);
+}
+if (app_data.run_a.history)
+  init_charts("run_a_history", app_data.run_a.history);
+if (app_data.run_b.history)
+  init_charts("run_b_history", app_data.run_b.history);
+
+</script>
+
+</body>
+
+</html>
+
+

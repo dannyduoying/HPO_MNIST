@@ -1,0 +1,28 @@
+[.tensorflow.tensor     Subset tensors with '['
+all_dims                All dims
+as_tensor               as_tensor
+evaluate                Evaluate a Model
+install_tensorflow      Install TensorFlow and its dependencies
+install_tensorflow_extras
+                        (Defunct) Install additional Python packages
+                        alongside TensorFlow
+parse_arguments         Parse Command Line Arguments
+parse_flags             Parse Configuration Flags for a TensorFlow
+                        Application
+set_random_seed         Set random seed for TensorFlow
+shape                   Create a 'tf.TensorShape' object
+tensorboard             TensorBoard Visualization Tool
+tensorflow              TensorFlow for R
+tf                      Main TensorFlow module
+tf_extract_opts         Tensor extract options
+tf_function             Creates a callable TensorFlow graph from an R
+                        function.
+tf_probability          TensorFlow Probability Module
+tfe_enable_eager_execution
+                        (Deprecated) Enables, for the rest of the
+                        lifetime of this program, eager execution.
+train_and_evaluate      (Deprecated) Simultaneously Train and Evaluate
+                        a Model
+use_compat              Use Compatibility
+use_session_with_seed   Use a session with a random seed
+view_savedmodel         View a Saved Model

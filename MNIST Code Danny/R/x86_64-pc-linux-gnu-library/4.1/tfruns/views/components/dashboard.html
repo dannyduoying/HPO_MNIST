@@ -1,0 +1,498 @@
+
+<style type="text/css">
+
+html {
+  font-family: sans-serif;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.navbar-fixed {
+  height: 53px;
+}
+
+nav {
+  height: 48px;
+  line-height: 48px;
+}
+
+nav .nav-wrapper .main-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-left: 15px;
+  margin-right: 25px;
+}
+
+nav .nav-wrapper .nav-left {
+  margin-left: 5px;
+}
+
+nav .right {
+  margin-right: 15px;
+}
+
+
+.container {
+  width: 100% !important;
+  padding-left: 15px;
+  padding-right: 25px;
+}
+
+.row {
+  margin-bottom: 15px;
+}
+
+.card {
+  margin-top: 1rem;
+}
+
+.card .card-title  {
+  font-size: 13px !important;
+  font-weight: 300;
+  padding-left: 10px;
+}
+
+.d2h-file-header {
+  font-size: 13px !important;
+  font-weight: 300;
+  padding-left: 10px;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: #f5f5f5 !important;
+  color: #616161 !important;
+  border-bottom: none;
+}
+
+.d2h-file-wrapper {
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  border: none;
+}
+
+.d2h-file-wrapper {
+  margin-bottom: 0;
+}
+
+.d2h-file-name-wrapper {
+  font-size: 13px;
+  font-family: sans-serif;
+}
+
+.d2h-icon-wrapper {
+  display: none;
+}
+
+.d2h-tag {
+  display: none;
+}
+
+.d2h-diff-table {
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.d2h-diff-table td {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.d2h-info {
+  background-color: #f1f8ff;
+  color: rgba(27,31,35,0.5);
+  border-color: none;
+}
+
+.d2h-file-diff .d2h-ins.d2h-change {
+  background-color: #e6ffed;
+}
+
+.d2h-file-diff .d2h-del.d2h-change {
+  background-color: #ffdce0;
+}
+
+
+.d2h-code-line ins, .d2h-code-side-line ins {
+  background-color: #acf2bd;
+}
+
+.d2h-code-line del, .d2h-code-side-line del {
+  background-color: #fdb8c0;
+}
+
+.card .card-content {
+  padding: 5px;
+}
+
+.card .card-content pre.source-code {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.error-panel {
+  font-family: monospace;
+  font-size: 0.9rem;
+  padding: 12px;
+}
+
+.error-panel i {
+  margin-right: 10px;
+}
+
+.error-message {
+  font-size: 1.1rem;
+  color: #e53935;
+}
+
+.files-list {
+  padding: 3px;
+}
+
+.files-copy {
+  padding-left: 9px;
+}
+
+.files-copy pre {
+  padding: 0;
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.file-chip {
+  border-radius: 5px;
+  background-color: #eceff1;
+  margin: 5px;
+  padding-left: 8px;
+}
+
+.file-chip .material-icons, .file-chip .icon-text {
+  vertical-align: middle;
+}
+
+.plot-img {
+  margin-top: 10px;
+}
+
+table.attributes td {
+  font-family: monospace;
+  font-size: 0.9rem;
+  padding: 3px;
+}
+
+.model-summary {
+  font-family: monospace;
+  font-size: 0.9rem;
+  margin-left: 5px;
+}
+
+#summary pre.source-code {
+  font-size: 0.8rem;
+}
+
+
+.side-by-side .row {
+  margin-bottom: 0;
+}
+
+.side-by-side .card {
+  margin-bottom: 0;
+}
+
+.code-diff {
+  margin-top: 1rem;
+}
+
+
+@media only screen and (max-width: 992px) {
+table.attributes td {
+  font-size: 0.7rem;
+}
+.model-summary {
+  font-size: 0.7rem;
+}
+.card .card-content pre.source-code {
+  font-size: 0.9rem;
+}
+.d2h-diff-table {
+  font-size: 0.7rem;
+}
+}
+
+table.attributes td .material-icons {
+  font-family: 'Material Icons';
+  font-style: normal;
+}
+
+table.attributes td .badge {
+  font-family: Roboto;
+  color: #fff;
+  min-width: 2rem;
+  border-radius: 2px;
+}
+
+table.attributes td + td {
+  text-align: right;
+}
+
+table.attributes tbody tr:last-child {
+  border-bottom: none;
+}
+
+.c3 {
+  width: 99%;
+  height: 225px;
+}
+
+</style>
+
+
+
+<!-- VueJS Components -->
+
+<script type="text/x-template" id="navbar-template">
+<div class="navbar-fixed">
+<nav class="orange darken-3">
+  <div class="nav-wrapper">
+    <span class="left main-title hide-on-small-only">### title ###</span>
+    <template v-if="tabs">
+    <div class="left nav-content">
+      <ul class="tabs tabs-transparent">
+        <li v-for="tab in tabs" class="tab">
+          <a v-bind:href="tab.href">### tab.title ###</a>
+        </li>
+      </ul>
+    </div>
+    </template>
+    <span class="nav-left"><slot name="left"></slot></span>
+    <div class="right">
+    <span class="nav-right"><slot name="right"></slot></span>
+    </div>
+  </div>
+</nav>
+</div>
+</script>
+<script type="application/javascript">
+Vue.component('navbar', {
+  props: {
+    title: {
+      type: String
+    },
+    tabs: {
+      type: Object,
+      default: null
+    }
+  },
+  template: '#navbar-template',
+  delimiters: ["###","###"],
+  mounted: function() {
+    $('ul.tabs').on('click', 'a', function(e) {
+      window.scrollTo(0, 0);
+    });
+  }
+})
+</script>
+
+<script type="text/x-template" id="card-template">
+<div class="card">
+<div class="card-title grey lighten-4 grey-text text-darken-2">### caption ###</div>
+<div class="card-content">
+<slot></slot>
+</div>
+</div>
+</script>
+<script type="application/javascript">
+Vue.component('card', {
+  props: ['caption'],
+  template: '#card-template',
+  delimiters: ["###","###"]
+})
+</script>
+
+<script type="text/x-template" id="property-card-template">
+<card v-bind:caption="caption">
+<table class="bordered attributes">
+<tbody>
+<tr v-for="(value, key) in data">
+<td>### key ###</td>
+<td v-if="typeof value !=='object'">### value ###</td>
+<td v-else><a v-bind:href="value.href" target="_blank">### value.text ###</a></td>
+</tr>
+</tbody>
+</table>
+</card>
+</script>
+<script type="application/javascript">
+Vue.component('property-card', {
+  props: ['caption', 'data'],
+  template: '#property-card-template',
+  delimiters: ["###","###"]
+})
+</script>
+
+
+<script type="text/x-template" id="plot-img-template">
+<img class="materialboxed responsive-img plot-img" v-bind:src="plot"/>
+</script>
+<script type="application/javascript">
+Vue.component('plot-img', {
+  props: ['plot'],
+  template: '#plot-img-template',
+  delimiters: ["###","###"]
+})
+</script>
+
+
+<script type="text/x-template" id="plots-card-template">
+<card caption="Plots">
+<div class="row">
+<div v-for="plot in plots" v-bind:class="col_class">
+<div class="center-align">
+<plot-img v-bind:plot="plot"/>
+</div>
+</div> <!-- /col -->
+</div> <!-- /row -->
+</card>
+</script>
+<script type="application/javascript">
+Vue.component('plots-card', {
+   props: {
+    "plots": {
+      type: Object
+    },
+    "col_class": {
+      type: String,
+      default: "col s12 m12 l6"
+    }
+  },
+  template: '#plots-card-template',
+  delimiters: ["###","###"]
+})
+</script>
+
+<script type="text/x-template" id="code-card-template">
+<card v-bind:caption="caption">
+<pre class="source-code"><code class="r">### code ###</code></pre>
+</card>
+</script>
+<script type="application/javascript">
+Vue.component('code-card', {
+  props: ['caption', 'code'],
+  template: '#code-card-template',
+  delimiters: ["###","###"]
+})
+</script>
+
+<script type="text/x-template" id="code-diff-template">
+<div class="code-diff">
+</div>
+</script>
+<script type="application/javascript">
+Vue.component('code-diff', {
+  props: ['filename', 'code_a', 'code_b'],
+  template: '#code-diff-template',
+  delimiters: ["###","###"],
+  mounted: function() {
+    var diff = JsDiff.createPatch(this.filename, this.code_a, this.code_b, '', '');
+    var diff2htmlUi = new Diff2HtmlUI({diff: diff});
+    var id = '_' + Math.random().toString(36).substr(2, 9);
+    $(this.$el).attr('id', id);
+    id = '#' + id;
+    diff2htmlUi.draw(id, {inputFormat: 'diff', outputFormat: 'line-by-line', showFiles: false, matching: 'words'});
+    diff2htmlUi.highlightCode(id);
+    diff2htmlUi.fileListCloseable(id, false);
+
+  }
+})
+</script>
+
+
+<script type="text/x-template" id="error-panel-template">
+<div class="card-panel error-panel">
+  <div class="error-message valign-wrapper">
+    <i class="material-icons small">error_outline</i>
+    <span class="text">Error: ### error.message ###</span>
+  </div>
+  <template v-if="error.traceback">
+  <pre class="error-traceback">### error.traceback ###</pre>
+  </template>
+</div>
+</script>
+<script type="application/javascript">
+Vue.component('error-panel', {
+  props: ['error'],
+  template: '#error-panel-template',
+  delimiters: ["###","###"]
+})
+</script>
+
+<script type="text/x-template" id="files-card-template">
+<card caption="Files">
+<div class="files-list">
+  <div class="chip file-chip" v-for="file in files">
+    <i class="material-icons" v-if="file.directory">folder_open</i>
+    <i class="material-icons" v-else>attach_file</i>
+    <span class="icon-text">### file.name ###</span>
+  </div>
+</div>
+<div class="files-copy">
+<pre>copy_run_files("### run_dir ###", to = "<i>target-dir</i>")</pre>
+</div>
+</card>
+</script>
+<script type="application/javascript">
+Vue.component('files-card', {
+  props: ['caption', 'files', 'run_dir'],
+  template: '#files-card-template',
+  delimiters: ["###","###"]
+})
+</script>
+
+<script type="text/x-template" id="side-by-side-template">
+<div class="side-by-side">
+<div class="row">
+<div class="col s12 m6">
+<slot name="left"></slot>
+</div> <!-- /col -->
+<div class="col s12 m6">
+<slot name="right"></slot>
+</div> <!-- /col -->
+</div> <!-- /row -->
+</div> <!-- /side-by-side -->
+</script>
+<script type="application/javascript">
+Vue.component('side-by-side', {
+  props: ['caption', 'props_a', 'props_b'],
+  template: '#side-by-side-template',
+  delimiters: ["###","###"]
+})
+</script>
+
+
+<script type="text/x-template" id="side-by-side-property-cards-template">
+<side-by-side>
+<div slot="left">
+<template v-if="props_a">
+<property-card v-bind:caption="caption" v-bind:data="props_a"></property-card>
+</template>
+</div>
+<div slot="right">
+<template v-if="props_b">
+<property-card v-bind:caption="caption" v-bind:data="props_b"></property-card>
+</template>
+</div>
+</side-by-side>
+</script>
+<script type="application/javascript">
+Vue.component('side-by-side-property-cards', {
+  props: ['caption', 'props_a', 'props_b'],
+  template: '#side-by-side-property-cards-template',
+  delimiters: ["###","###"]
+})
+</script>
+
+
+
+
+
+

@@ -1,0 +1,739 @@
+%<-active%              Make an Active Binding
+%py_class%              Make a python class constructor
+Metric                  Metric
+activation_relu         Activation functions
+adapt                   Fits the state of the preprocessing layer to
+                        the data being passed
+application_densenet    Instantiates the DenseNet architecture.
+application_efficientnet
+                        Instantiates the EfficientNetB0 architecture
+application_inception_resnet_v2
+                        Inception-ResNet v2 model, with weights trained
+                        on ImageNet
+application_inception_v3
+                        Inception V3 model, with weights pre-trained on
+                        ImageNet.
+application_mobilenet   MobileNet model architecture.
+application_mobilenet_v2
+                        MobileNetV2 model architecture
+application_mobilenet_v3
+                        Instantiates the MobileNetV3Large architecture
+application_nasnet      Instantiates a NASNet model.
+application_resnet      Instantiates the ResNet architecture
+application_vgg         VGG16 and VGG19 models for Keras.
+application_xception    Instantiates the Xception architecture
+backend                 Keras backend tensor engine
+bidirectional           Bidirectional wrapper for RNNs
+callback_backup_and_restore
+                        Callback to back up and restore the training
+                        state
+callback_csv_logger     Callback that streams epoch results to a csv
+                        file
+callback_early_stopping
+                        Stop training when a monitored quantity has
+                        stopped improving.
+callback_lambda         Create a custom callback
+callback_learning_rate_scheduler
+                        Learning rate scheduler.
+callback_model_checkpoint
+                        Save the model after every epoch.
+callback_progbar_logger
+                        Callback that prints metrics to stdout.
+callback_reduce_lr_on_plateau
+                        Reduce learning rate when a metric has stopped
+                        improving.
+callback_remote_monitor
+                        Callback used to stream events to a server.
+callback_tensorboard    TensorBoard basic visualizations
+callback_terminate_on_naan
+                        Callback that terminates training when a NaN
+                        loss is encountered.
+clone_model             Clone a model instance.
+compile.keras.engine.training.Model
+                        Configure a Keras model for training
+constraints             Weight constraints
+count_params            Count the total number of scalars composing the
+                        weights.
+create_layer            Create a Keras Layer
+create_layer_wrapper    Create a Keras Layer wrapper
+custom_metric           Custom metric function
+dataset_boston_housing
+                        Boston housing price regression dataset
+dataset_cifar10         CIFAR10 small image classification
+dataset_cifar100        CIFAR100 small image classification
+dataset_fashion_mnist   Fashion-MNIST database of fashion articles
+dataset_imdb            IMDB Movie reviews sentiment classification
+dataset_mnist           MNIST database of handwritten digits
+dataset_reuters         Reuters newswire topics classification
+evaluate.keras.engine.training.Model
+                        Evaluate a Keras model
+export_savedmodel.keras.engine.training.Model
+                        Export a Saved Model
+fit.keras.engine.training.Model
+                        Train a Keras model
+fit_image_data_generator
+                        Fit image data generator internal statistics to
+                        some sample data.
+fit_text_tokenizer      Update tokenizer internal vocabulary based on a
+                        list of texts or list of sequences.
+flow_images_from_data   Generates batches of augmented/normalized data
+                        from image data and labels
+flow_images_from_dataframe
+                        Takes the dataframe and the path to a directory
+                        and generates batches of augmented/normalized
+                        data.
+flow_images_from_directory
+                        Generates batches of data from images in a
+                        directory (with optional augmented/normalized
+                        data)
+freeze_weights          Freeze and unfreeze weights
+generator_next          Retrieve the next item from a generator
+get_config              Layer/Model configuration
+get_file                Downloads a file from a URL if it not already
+                        in the cache.
+get_input_at            Retrieve tensors for layers with multiple nodes
+get_layer               Retrieves a layer based on either its name
+                        (unique) or index.
+get_weights             Layer/Model weights as R arrays
+hdf5_matrix             Representation of HDF5 dataset to be used
+                        instead of an R array
+image_data_generator    Generate batches of image data with real-time
+                        data augmentation. The data will be looped over
+                        (in batches).
+image_dataset_from_directory
+                        Create a dataset from a directory
+image_load              Loads an image into PIL format.
+image_to_array          3D array representation of images
+imagenet_decode_predictions
+                        Decodes the prediction of an ImageNet model.
+imagenet_preprocess_input
+                        Preprocesses a tensor or array encoding a batch
+                        of images.
+implementation          Keras implementation
+initializer_constant    Initializer that generates tensors initialized
+                        to a constant value.
+initializer_glorot_normal
+                        Glorot normal initializer, also called Xavier
+                        normal initializer.
+initializer_glorot_uniform
+                        Glorot uniform initializer, also called Xavier
+                        uniform initializer.
+initializer_he_normal   He normal initializer.
+initializer_he_uniform
+                        He uniform variance scaling initializer.
+initializer_identity    Initializer that generates the identity matrix.
+initializer_lecun_normal
+                        LeCun normal initializer.
+initializer_lecun_uniform
+                        LeCun uniform initializer.
+initializer_ones        Initializer that generates tensors initialized
+                        to 1.
+initializer_orthogonal
+                        Initializer that generates a random orthogonal
+                        matrix.
+initializer_random_normal
+                        Initializer that generates tensors with a
+                        normal distribution.
+initializer_random_uniform
+                        Initializer that generates tensors with a
+                        uniform distribution.
+initializer_truncated_normal
+                        Initializer that generates a truncated normal
+                        distribution.
+initializer_variance_scaling
+                        Initializer capable of adapting its scale to
+                        the shape of weights.
+initializer_zeros       Initializer that generates tensors initialized
+                        to 0.
+install_keras           Install TensorFlow and Keras, including all
+                        Python dependencies
+is_keras_available      Check if Keras is Available
+k_abs                   Element-wise absolute value.
+k_all                   Bitwise reduction (logical AND).
+k_any                   Bitwise reduction (logical OR).
+k_arange                Creates a 1D tensor containing a sequence of
+                        integers.
+k_argmax                Returns the index of the maximum value along an
+                        axis.
+k_argmin                Returns the index of the minimum value along an
+                        axis.
+k_backend               Active Keras backend
+k_batch_dot             Batchwise dot product.
+k_batch_flatten         Turn a nD tensor into a 2D tensor with same 1st
+                        dimension.
+k_batch_get_value       Returns the value of more than one tensor
+                        variable.
+k_batch_normalization   Applies batch normalization on x given mean,
+                        var, beta and gamma.
+k_batch_set_value       Sets the values of many tensor variables at
+                        once.
+k_bias_add              Adds a bias vector to a tensor.
+k_binary_crossentropy   Binary crossentropy between an output tensor
+                        and a target tensor.
+k_cast                  Casts a tensor to a different dtype and returns
+                        it.
+k_cast_to_floatx        Cast an array to the default Keras float type.
+k_categorical_crossentropy
+                        Categorical crossentropy between an output
+                        tensor and a target tensor.
+k_clear_session         Destroys the current TF graph and creates a new
+                        one.
+k_clip                  Element-wise value clipping.
+k_concatenate           Concatenates a list of tensors alongside the
+                        specified axis.
+k_constant              Creates a constant tensor.
+k_conv1d                1D convolution.
+k_conv2d                2D convolution.
+k_conv2d_transpose      2D deconvolution (i.e. transposed convolution).
+k_conv3d                3D convolution.
+k_conv3d_transpose      3D deconvolution (i.e. transposed convolution).
+k_cos                   Computes cos of x element-wise.
+k_count_params          Returns the static number of elements in a
+                        Keras variable or tensor.
+k_ctc_batch_cost        Runs CTC loss algorithm on each batch element.
+k_ctc_decode            Decodes the output of a softmax.
+k_ctc_label_dense_to_sparse
+                        Converts CTC labels from dense to sparse.
+k_cumprod               Cumulative product of the values in a tensor,
+                        alongside the specified axis.
+k_cumsum                Cumulative sum of the values in a tensor,
+                        alongside the specified axis.
+k_depthwise_conv2d      Depthwise 2D convolution with separable
+                        filters.
+k_dot                   Multiplies 2 tensors (and/or variables) and
+                        returns a _tensor_.
+k_dropout               Sets entries in 'x' to zero at random, while
+                        scaling the entire tensor.
+k_dtype                 Returns the dtype of a Keras tensor or
+                        variable, as a string.
+k_elu                   Exponential linear unit.
+k_epsilon               Fuzz factor used in numeric expressions.
+k_equal                 Element-wise equality between two tensors.
+k_eval                  Evaluates the value of a variable.
+k_exp                   Element-wise exponential.
+k_expand_dims           Adds a 1-sized dimension at index 'axis'.
+k_eye                   Instantiate an identity matrix and returns it.
+k_flatten               Flatten a tensor.
+k_floatx                Default float type
+k_foldl                 Reduce elems using fn to combine them from left
+                        to right.
+k_foldr                 Reduce elems using fn to combine them from
+                        right to left.
+k_function              Instantiates a Keras function
+k_gather                Retrieves the elements of indices 'indices' in
+                        the tensor 'reference'.
+k_get_session           TF session to be used by the backend.
+k_get_uid               Get the uid for the default graph.
+k_get_value             Returns the value of a variable.
+k_get_variable_shape    Returns the shape of a variable.
+k_gradients             Returns the gradients of 'variables' w.r.t.
+                        'loss'.
+k_greater               Element-wise truth value of (x > y).
+k_greater_equal         Element-wise truth value of (x >= y).
+k_hard_sigmoid          Segment-wise linear approximation of sigmoid.
+k_identity              Returns a tensor with the same content as the
+                        input tensor.
+k_image_data_format     Default image data format convention
+                        ('channels_first' or 'channels_last').
+k_in_test_phase         Selects 'x' in test phase, and 'alt' otherwise.
+k_in_top_k              Returns whether the 'targets' are in the top
+                        'k' 'predictions'.
+k_in_train_phase        Selects 'x' in train phase, and 'alt'
+                        otherwise.
+k_int_shape             Returns the shape of tensor or variable as a
+                        list of int or NULL entries.
+k_is_keras_tensor       Returns whether 'x' is a Keras tensor.
+k_is_placeholder        Returns whether 'x' is a placeholder.
+k_is_sparse             Returns whether a tensor is a sparse tensor.
+k_is_tensor             Returns whether 'x' is a symbolic tensor.
+k_l2_normalize          Normalizes a tensor wrt the L2 norm alongside
+                        the specified axis.
+k_learning_phase        Returns the learning phase flag.
+k_less                  Element-wise truth value of (x < y).
+k_less_equal            Element-wise truth value of (x <= y).
+k_local_conv1d          Apply 1D conv with un-shared weights.
+k_local_conv2d          Apply 2D conv with un-shared weights.
+k_log                   Element-wise log.
+k_manual_variable_initialization
+                        Sets the manual variable initialization flag.
+k_map_fn                Map the function fn over the elements elems and
+                        return the outputs.
+k_max                   Maximum value in a tensor.
+k_maximum               Element-wise maximum of two tensors.
+k_mean                  Mean of a tensor, alongside the specified axis.
+k_min                   Minimum value in a tensor.
+k_minimum               Element-wise minimum of two tensors.
+k_moving_average_update
+                        Compute the moving average of a variable.
+k_ndim                  Returns the number of axes in a tensor, as an
+                        integer.
+k_normalize_batch_in_training
+                        Computes mean and std for batch then apply
+                        batch_normalization on batch.
+k_not_equal             Element-wise inequality between two tensors.
+k_one_hot               Computes the one-hot representation of an
+                        integer tensor.
+k_ones                  Instantiates an all-ones tensor variable and
+                        returns it.
+k_ones_like             Instantiates an all-ones variable of the same
+                        shape as another tensor.
+k_permute_dimensions    Permutes axes in a tensor.
+k_placeholder           Instantiates a placeholder tensor and returns
+                        it.
+k_pool2d                2D Pooling.
+k_pool3d                3D Pooling.
+k_pow                   Element-wise exponentiation.
+k_print_tensor          Prints 'message' and the tensor value when
+                        evaluated.
+k_prod                  Multiplies the values in a tensor, alongside
+                        the specified axis.
+k_random_binomial       Returns a tensor with random binomial
+                        distribution of values.
+k_random_normal         Returns a tensor with normal distribution of
+                        values.
+k_random_normal_variable
+                        Instantiates a variable with values drawn from
+                        a normal distribution.
+k_random_uniform        Returns a tensor with uniform distribution of
+                        values.
+k_random_uniform_variable
+                        Instantiates a variable with values drawn from
+                        a uniform distribution.
+k_relu                  Rectified linear unit.
+k_repeat                Repeats a 2D tensor.
+k_repeat_elements       Repeats the elements of a tensor along an axis.
+k_reset_uids            Reset graph identifiers.
+k_reshape               Reshapes a tensor to the specified shape.
+k_resize_images         Resizes the images contained in a 4D tensor.
+k_resize_volumes        Resizes the volume contained in a 5D tensor.
+k_reverse               Reverse a tensor along the specified axes.
+k_rnn                   Iterates over the time dimension of a tensor
+k_round                 Element-wise rounding to the closest integer.
+k_separable_conv2d      2D convolution with separable filters.
+k_set_learning_phase    Sets the learning phase to a fixed value.
+k_set_value             Sets the value of a variable, from an R array.
+k_shape                 Returns the symbolic shape of a tensor or
+                        variable.
+k_sigmoid               Element-wise sigmoid.
+k_sign                  Element-wise sign.
+k_sin                   Computes sin of x element-wise.
+k_softmax               Softmax of a tensor.
+k_softplus              Softplus of a tensor.
+k_softsign              Softsign of a tensor.
+k_sparse_categorical_crossentropy
+                        Categorical crossentropy with integer targets.
+k_spatial_2d_padding    Pads the 2nd and 3rd dimensions of a 4D tensor.
+k_spatial_3d_padding    Pads 5D tensor with zeros along the depth,
+                        height, width dimensions.
+k_sqrt                  Element-wise square root.
+k_square                Element-wise square.
+k_squeeze               Removes a 1-dimension from the tensor at index
+                        'axis'.
+k_stack                 Stacks a list of rank 'R' tensors into a rank
+                        'R+1' tensor.
+k_std                   Standard deviation of a tensor, alongside the
+                        specified axis.
+k_stop_gradient         Returns 'variables' but with zero gradient
+                        w.r.t. every other variable.
+k_sum                   Sum of the values in a tensor, alongside the
+                        specified axis.
+k_switch                Switches between two operations depending on a
+                        scalar value.
+k_tanh                  Element-wise tanh.
+k_temporal_padding      Pads the middle dimension of a 3D tensor.
+k_tile                  Creates a tensor by tiling 'x' by 'n'.
+k_to_dense              Converts a sparse tensor into a dense tensor
+                        and returns it.
+k_transpose             Transposes a tensor and returns it.
+k_truncated_normal      Returns a tensor with truncated random normal
+                        distribution of values.
+k_unstack               Unstack rank 'R' tensor into a list of rank
+                        'R-1' tensors.
+k_update                Update the value of 'x' to 'new_x'.
+k_update_add            Update the value of 'x' by adding 'increment'.
+k_update_sub            Update the value of 'x' by subtracting
+                        'decrement'.
+k_var                   Variance of a tensor, alongside the specified
+                        axis.
+k_variable              Instantiates a variable and returns it.
+k_zeros                 Instantiates an all-zeros variable and returns
+                        it.
+k_zeros_like            Instantiates an all-zeros variable of the same
+                        shape as another tensor.
+keras                   Main Keras module
+keras-package           R interface to Keras
+keras_array             Keras array object
+keras_model             Keras Model
+keras_model_sequential
+                        Keras Model composed of a linear stack of
+                        layers
+layer_activation        Apply an activation function to an output.
+layer_activation_elu    Exponential Linear Unit.
+layer_activation_leaky_relu
+                        Leaky version of a Rectified Linear Unit.
+layer_activation_parametric_relu
+                        Parametric Rectified Linear Unit.
+layer_activation_relu   Rectified Linear Unit activation function
+layer_activation_selu   Scaled Exponential Linear Unit.
+layer_activation_softmax
+                        Softmax activation function.
+layer_activation_thresholded_relu
+                        Thresholded Rectified Linear Unit.
+layer_activity_regularization
+                        Layer that applies an update to the cost
+                        function based input activity.
+layer_add               Layer that adds a list of inputs.
+layer_additive_attention
+                        Additive attention layer, a.k.a. Bahdanau-style
+                        attention
+layer_alpha_dropout     Applies Alpha Dropout to the input.
+layer_attention         Dot-product attention layer, a.k.a. Luong-style
+                        attention
+layer_average           Layer that averages a list of inputs.
+layer_average_pooling_1d
+                        Average pooling for temporal data.
+layer_average_pooling_2d
+                        Average pooling operation for spatial data.
+layer_average_pooling_3d
+                        Average pooling operation for 3D data (spatial
+                        or spatio-temporal).
+layer_batch_normalization
+                        Batch normalization layer (Ioffe and Szegedy,
+                        2014).
+layer_category_encoding
+                        A preprocessing layer which encodes integer
+                        features.
+layer_center_crop       Crop the central portion of the images to
+                        target height and width
+layer_concatenate       Layer that concatenates a list of inputs.
+layer_conv_1d           1D convolution layer (e.g. temporal
+                        convolution).
+layer_conv_1d_transpose
+                        Transposed 1D convolution layer (sometimes
+                        called Deconvolution).
+layer_conv_2d           2D convolution layer (e.g. spatial convolution
+                        over images).
+layer_conv_2d_transpose
+                        Transposed 2D convolution layer (sometimes
+                        called Deconvolution).
+layer_conv_3d           3D convolution layer (e.g. spatial convolution
+                        over volumes).
+layer_conv_3d_transpose
+                        Transposed 3D convolution layer (sometimes
+                        called Deconvolution).
+layer_conv_lstm_1d      1D Convolutional LSTM
+layer_conv_lstm_2d      Convolutional LSTM.
+layer_conv_lstm_3d      3D Convolutional LSTM
+layer_cropping_1d       Cropping layer for 1D input (e.g. temporal
+                        sequence).
+layer_cropping_2d       Cropping layer for 2D input (e.g. picture).
+layer_cropping_3d       Cropping layer for 3D data (e.g. spatial or
+                        spatio-temporal).
+layer_dense             Add a densely-connected NN layer to an output
+layer_dense_features    Constructs a DenseFeatures.
+layer_depthwise_conv_1d
+                        Depthwise 1D convolution
+layer_depthwise_conv_2d
+                        Depthwise separable 2D convolution.
+layer_discretization    A preprocessing layer which buckets continuous
+                        features by ranges.
+layer_dot               Layer that computes a dot product between
+                        samples in two tensors.
+layer_dropout           Applies Dropout to the input.
+layer_embedding         Turns positive integers (indexes) into dense
+                        vectors of fixed size.
+layer_flatten           Flattens an input
+layer_gaussian_dropout
+                        Apply multiplicative 1-centered Gaussian noise.
+layer_gaussian_noise    Apply additive zero-centered Gaussian noise.
+layer_global_average_pooling_1d
+                        Global average pooling operation for temporal
+                        data.
+layer_global_average_pooling_2d
+                        Global average pooling operation for spatial
+                        data.
+layer_global_average_pooling_3d
+                        Global Average pooling operation for 3D data.
+layer_global_max_pooling_1d
+                        Global max pooling operation for temporal data.
+layer_global_max_pooling_2d
+                        Global max pooling operation for spatial data.
+layer_global_max_pooling_3d
+                        Global Max pooling operation for 3D data.
+layer_gru               Gated Recurrent Unit - Cho et al.
+layer_gru_cell          Cell class for the GRU layer
+layer_hashing           A preprocessing layer which hashes and bins
+                        categorical features.
+layer_input             Input layer
+layer_integer_lookup    A preprocessing layer which maps integer
+                        features to contiguous ranges.
+layer_lambda            Wraps arbitrary expression as a layer
+layer_layer_normalization
+                        Layer normalization layer (Ba et al., 2016).
+layer_locally_connected_1d
+                        Locally-connected layer for 1D inputs.
+layer_locally_connected_2d
+                        Locally-connected layer for 2D inputs.
+layer_lstm              Long Short-Term Memory unit - Hochreiter 1997.
+layer_lstm_cell         Cell class for the LSTM layer
+layer_masking           Masks a sequence by using a mask value to skip
+                        timesteps.
+layer_max_pooling_1d    Max pooling operation for temporal data.
+layer_max_pooling_2d    Max pooling operation for spatial data.
+layer_max_pooling_3d    Max pooling operation for 3D data (spatial or
+                        spatio-temporal).
+layer_maximum           Layer that computes the maximum (element-wise)
+                        a list of inputs.
+layer_minimum           Layer that computes the minimum (element-wise)
+                        a list of inputs.
+layer_multi_head_attention
+                        MultiHeadAttention layer
+layer_multiply          Layer that multiplies (element-wise) a list of
+                        inputs.
+layer_normalization     A preprocessing layer which normalizes
+                        continuous features.
+layer_permute           Permute the dimensions of an input according to
+                        a given pattern
+layer_random_brightness
+                        A preprocessing layer which randomly adjusts
+                        brightness during training
+layer_random_contrast   Adjust the contrast of an image or images by a
+                        random factor
+layer_random_crop       Randomly crop the images to target height and
+                        width
+layer_random_flip       Randomly flip each image horizontally and
+                        vertically
+layer_random_height     Randomly vary the height of a batch of images
+                        during training
+layer_random_rotation   Randomly rotate each image
+layer_random_translation
+                        Randomly translate each image during training
+layer_random_width      Randomly vary the width of a batch of images
+                        during training
+layer_random_zoom       A preprocessing layer which randomly zooms
+                        images during training.
+layer_repeat_vector     Repeats the input n times.
+layer_rescaling         Multiply inputs by 'scale' and adds 'offset'
+layer_reshape           Reshapes an output to a certain shape.
+layer_resizing          Image resizing layer
+layer_rnn               Base class for recurrent layers
+layer_separable_conv_1d
+                        Depthwise separable 1D convolution.
+layer_separable_conv_2d
+                        Separable 2D convolution.
+layer_simple_rnn        Fully-connected RNN where the output is to be
+                        fed back to input.
+layer_simple_rnn_cell   Cell class for SimpleRNN
+layer_spatial_dropout_1d
+                        Spatial 1D version of Dropout.
+layer_spatial_dropout_2d
+                        Spatial 2D version of Dropout.
+layer_spatial_dropout_3d
+                        Spatial 3D version of Dropout.
+layer_stacked_rnn_cells
+                        Wrapper allowing a stack of RNN cells to behave
+                        as a single cell
+layer_string_lookup     A preprocessing layer which maps string
+                        features to integer indices.
+layer_subtract          Layer that subtracts two inputs.
+layer_text_vectorization
+                        A preprocessing layer which maps text features
+                        to integer sequences.
+layer_unit_normalization
+                        Unit normalization layer
+layer_upsampling_1d     Upsampling layer for 1D inputs.
+layer_upsampling_2d     Upsampling layer for 2D inputs.
+layer_upsampling_3d     Upsampling layer for 3D inputs.
+layer_zero_padding_1d   Zero-padding layer for 1D input (e.g. temporal
+                        sequence).
+layer_zero_padding_2d   Zero-padding layer for 2D input (e.g. picture).
+layer_zero_padding_3d   Zero-padding layer for 3D data (spatial or
+                        spatio-temporal).
+learning_rate_schedule_cosine_decay
+                        A LearningRateSchedule that uses a cosine decay
+                        schedule
+learning_rate_schedule_cosine_decay_restarts
+                        A LearningRateSchedule that uses a cosine decay
+                        schedule with restarts
+learning_rate_schedule_exponential_decay
+                        A LearningRateSchedule that uses an exponential
+                        decay schedule
+learning_rate_schedule_inverse_time_decay
+                        A LearningRateSchedule that uses an inverse
+                        time decay schedule
+learning_rate_schedule_piecewise_constant_decay
+                        A LearningRateSchedule that uses a piecewise
+                        constant decay schedule
+learning_rate_schedule_polynomial_decay
+                        A LearningRateSchedule that uses a polynomial
+                        decay schedule
+loss-functions          Loss functions
+make_sampling_table     Generates a word rank-based probabilistic
+                        sampling table.
+mark_active             Define new keras types
+metric_accuracy         Calculates how often predictions equal labels
+metric_auc              Approximates the AUC (Area under the curve) of
+                        the ROC or PR curves
+metric_binary_accuracy
+                        Calculates how often predictions match binary
+                        labels
+metric_binary_crossentropy
+                        Computes the crossentropy metric between the
+                        labels and predictions
+metric_categorical_accuracy
+                        Calculates how often predictions match one-hot
+                        labels
+metric_categorical_crossentropy
+                        Computes the crossentropy metric between the
+                        labels and predictions
+metric_categorical_hinge
+                        Computes the categorical hinge metric between
+                        'y_true' and 'y_pred'
+metric_cosine_similarity
+                        Computes the cosine similarity between the
+                        labels and predictions
+metric_false_negatives
+                        Calculates the number of false negatives
+metric_false_positives
+                        Calculates the number of false positives
+metric_hinge            Computes the hinge metric between 'y_true' and
+                        'y_pred'
+metric_kullback_leibler_divergence
+                        Computes Kullback-Leibler divergence
+metric_logcosh_error    Computes the logarithm of the hyperbolic cosine
+                        of the prediction error
+metric_mean             Computes the (weighted) mean of the given
+                        values
+metric_mean_absolute_error
+                        Computes the mean absolute error between the
+                        labels and predictions
+metric_mean_absolute_percentage_error
+                        Computes the mean absolute percentage error
+                        between 'y_true' and 'y_pred'
+metric_mean_iou         Computes the mean Intersection-Over-Union
+                        metric
+metric_mean_relative_error
+                        Computes the mean relative error by normalizing
+                        with the given values
+metric_mean_squared_error
+                        Computes the mean squared error between labels
+                        and predictions
+metric_mean_squared_logarithmic_error
+                        Computes the mean squared logarithmic error
+metric_mean_tensor      Computes the element-wise (weighted) mean of
+                        the given tensors
+metric_mean_wrapper     Wraps a stateless metric function with the Mean
+                        metric
+metric_poisson          Computes the Poisson metric between 'y_true'
+                        and 'y_pred'
+metric_precision        Computes the precision of the predictions with
+                        respect to the labels
+metric_precision_at_recall
+                        Computes best precision where recall is >=
+                        specified value
+metric_recall           Computes the recall of the predictions with
+                        respect to the labels
+metric_recall_at_precision
+                        Computes best recall where precision is >=
+                        specified value
+metric_root_mean_squared_error
+                        Computes root mean squared error metric between
+                        'y_true' and 'y_pred'
+metric_sensitivity_at_specificity
+                        Computes best sensitivity where specificity is
+                        >= specified value
+metric_sparse_categorical_accuracy
+                        Calculates how often predictions match integer
+                        labels
+metric_sparse_categorical_crossentropy
+                        Computes the crossentropy metric between the
+                        labels and predictions
+metric_sparse_top_k_categorical_accuracy
+                        Computes how often integer targets are in the
+                        top 'K' predictions
+metric_specificity_at_sensitivity
+                        Computes best specificity where sensitivity is
+                        >= specified value
+metric_squared_hinge    Computes the squared hinge metric
+metric_sum              Computes the (weighted) sum of the given values
+metric_top_k_categorical_accuracy
+                        Computes how often targets are in the top 'K'
+                        predictions
+metric_true_negatives   Calculates the number of true negatives
+metric_true_positives   Calculates the number of true positives
+model_from_saved_model
+                        Load a Keras model from the Saved Model format
+model_to_json           Model configuration as JSON
+model_to_yaml           Model configuration as YAML
+new_learning_rate_schedule_class
+                        Create a new learning rate schedule type
+normalize               Normalize a matrix or nd-array
+optimizer_adadelta      Optimizer that implements the Adadelta
+                        algorithm
+optimizer_adagrad       Optimizer that implements the Adagrad algorithm
+optimizer_adam          Optimizer that implements the Adam algorithm
+optimizer_adamax        Optimizer that implements the Adamax algorithm
+optimizer_ftrl          Optimizer that implements the FTRL algorithm
+optimizer_nadam         Optimizer that implements the Nadam algorithm
+optimizer_rmsprop       Optimizer that implements the RMSprop algorithm
+optimizer_sgd           Gradient descent (with momentum) optimizer
+pad_sequences           Pads sequences to the same length
+plot.keras.engine.training.Model
+                        Plot a Keras model
+plot.keras_training_history
+                        Plot training history
+pop_layer               Remove the last layer in a model
+predict.keras.engine.training.Model
+                        Generate predictions from a Keras model
+predict_on_batch        Returns predictions for a single batch of
+                        samples.
+regularizer_l1          L1 and L2 regularization
+regularizer_orthogonal
+                        A regularizer that encourages input vectors to
+                        be orthogonal to each other
+reset_states            Reset the states for a layer
+save_model_hdf5         Save/Load models using HDF5 files
+save_model_tf           Save/Load models using SavedModel format
+save_model_weights_hdf5
+                        Save/Load model weights using HDF5 files
+save_model_weights_tf   Save model weights in the SavedModel format
+save_text_tokenizer     Save a text tokenizer to an external file
+sequences_to_matrix     Convert a list of sequences into a matrix.
+sequential_model_input_layer
+                        sequential_model_input_layer
+serialize_model         Serialize a model to an R object
+skipgrams               Generates skipgram word pairs.
+summary.keras.engine.training.Model
+                        Print a summary of a Keras model
+text_dataset_from_directory
+                        Generate a 'tf.data.Dataset' from text files in
+                        a directory
+text_hashing_trick      Converts a text to a sequence of indexes in a
+                        fixed-size hashing space.
+text_one_hot            One-hot encode a text into a list of word
+                        indexes in a vocabulary of size n.
+text_to_word_sequence   Convert text to a sequence of words (or
+                        tokens).
+text_tokenizer          Text tokenization utility
+texts_to_matrix         Convert a list of texts to a matrix.
+texts_to_sequences      Transform each text in texts in a sequence of
+                        integers.
+texts_to_sequences_generator
+                        Transforms each text in texts in a sequence of
+                        integers.
+time_distributed        This layer wrapper allows to apply a layer to
+                        every temporal slice of an input
+timeseries_dataset_from_array
+                        Creates a dataset of sliding windows over a
+                        timeseries provided as array
+timeseries_generator    Utility function for generating batches of
+                        temporal data.
+to_categorical          Converts a class vector (integers) to binary
+                        class matrix.
+train_on_batch          Single gradient update or model evaluation over
+                        one batch of samples.
+use_implementation      Select a Keras implementation and backend
+with_custom_object_scope
+                        Provide a scope with mappings of names to
+                        custom objects
+zip_lists               zip lists

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<title>Training Run</title>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+{{{ jquery }}}
+
+{{{ materialize }}}
+
+{{{ material_icons }}}
+
+{{{ vue_js }}}
+
+{{{ c3 }}}
+
+{{{ metrics_charts }}}
+
+{{{ highlight_js }}}
+
+{{{ dashboard }}}
+
+<style type="text/css">
+@media only screen and (min-width: 601px) {
+.row .col:last-child {
+  padding-right: 0.2rem;
+}
+}
+</style>
+
+</head>
+
+<body>
+
+<div v-cloak id="vue-app">
+
+<navbar title="Training Run" v-bind:tabs="tabs">
+  <span slot="right"><span class="hide-on-small-only">### run_dir ###</span></span>
+</navbar>
+
+<div class="container">
+
+<div id="summary">
+
+<div class="row">
+
+<div class="col s12 m4 l4 xl4 push-m8 push-l8 push-xl8">
+
+<template v-if="cloudml">
+<property-card
+  caption="CloudML"
+  v-bind:data="cloudml">
+</property-card>
+</template>
+
+<template v-if="attributes">
+<property-card
+  caption="Run"
+  v-bind:data="attributes">
+</property-card>
+</template>
+
+<template v-if="metrics">
+<property-card
+  caption="Metrics"
+  v-bind:data="metrics">
+</property-card>
+</template>
+
+<template v-if="evaluation">
+<property-card
+  caption="Evaluation"
+  v-bind:data="evaluation">
+</property-card>
+</template>
+
+<template v-if="flags">
+<property-card
+  caption="Flags"
+  v-bind:data="flags">
+</property-card>
+</template>
+
+<template v-if="optimization">
+<property-card
+  caption="Optimization"
+  v-bind:data="optimization">
+</property-card>
+</template>
+
+
+<template v-if="training">
+<property-card
+  caption="Training"
+  v-bind:data="training">
+</property-card>
+</template>
+
+</div> <!-- /col -->
+
+<div class="col s12 m8 l8 xl8 pull-m4 pull-l4 pull-xl4">
+
+<template v-if="output_tab">
+
+<template v-if="error">
+<error-panel
+  v-bind:error="error">
+</error-panel>
+</template>
+
+<template v-if="history">
+<card caption="History">
+<div id="c3-container"></div>
+</card>
+</template>
+
+<template v-if="model">
+<card caption="Model">
+<pre class="model-summary">### model ###
+</pre>
+</card>
+</template>
+
+</template>
+
+<template v-else>
+
+<template v-if="files">
+<files-card
+  v-bind:files="files"
+  v-bind:run_dir="run_dir">
+</files-card>
+</template>
+
+<template v-if="plots">
+<plots-card v-bind:plots="plots">
+</plots-card>
+</template>
+
+<template v-if="output">
+<code-card caption="Console" v-bind:code="output">
+</code-card>
+</template>
+</template>
+
+
+</div> <!-- /col -->
+
+</div> <!-- /row -->
+
+</div> <!-- /summary -->
+
+<template v-if="output_tab">
+
+<div id="output">
+
+<template v-if="files">
+<files-card
+  v-bind:files="files"
+  v-bind:run_dir="run_dir">
+</files-card>
+</template>
+
+<template v-if="plots">
+<plots-card v-bind:plots="plots">
+</plots-card>
+</template>
+
+<template v-if="output">
+<code-card caption="Console" v-bind:code="output">
+</code-card>
+</template>
+
+</div> <!-- /output -->
+
+</template>
+
+<div id="code">
+<code-card v-for="(item, index) in source_code" v-bind:caption="index" v-bind:code="item">
+</code-card>
+</div> <!-- /code -->
+
+</div> <!-- /container -->
+
+</div> <!-- /app -->
+
+<script type="application/json" id="app-data">{{{ data }}}</script>
+
+
+<script type="application/javascript">
+
+// load app json
+var app_data_json = document.getElementById('app-data').innerHTML;
+var app_data = JSON.parse(app_data_json);
+
+// initialize app
+var app = new Vue({
+  el: '#vue-app',
+  data: app_data,
+  delimiters: ["###","###"]
+});
+
+// initialize metrics charts
+if (app_data.history) {
+  var c3_container = document.getElementById("c3-container");
+  var charts = new MetricsCharts(c3_container, app_data.history, null, true);
+}
+
+
+// init highlighting
+hljs.initHighlighting();
+$('code.hljs, pre.error-traceback').each(function(i, block) {
+  hljs.lineNumbersBlock(block);
+});
+
+</script>
+
+
+</body>
+
+</html>
+
+

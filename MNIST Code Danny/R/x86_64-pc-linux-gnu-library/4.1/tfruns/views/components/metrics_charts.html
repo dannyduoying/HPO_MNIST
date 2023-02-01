@@ -1,0 +1,336 @@
+<script type="application/javascript">
+
+// polyfill for Math.log10
+Math.log10 = Math.log10 || function(x) {
+  return Math.log(x) * Math.LOG10E;
+};
+
+
+function MetricsCharts(container, metrics, update_url, auto_resize) {
+
+  // instance variables
+  this.$container = container;
+  this.$metrics = metrics;
+  this.$update_url = update_url;
+  this.$auto_resize = auto_resize;
+  this.$metric_names = [];
+  this.$c3_charts = [];
+
+  // alias this function functions
+  var thiz = this;
+
+  // contruction
+  this.$initialize = function() {
+
+    // determine metrics we will be plotting (filter out val_ prefixed ones)
+    var keys = Object.keys(this.$metrics);
+    for (var k = 0; k<keys.length; k++) {
+      if (keys[k].lastIndexOf('val_', 0) !== 0 && keys[k] !== 'epoch')
+        this.$metric_names.push(keys[k]);
+    }
+
+    // create a C3 chart for each metric
+    for (var i = 0; i<this.$metric_names.length; i++) {
+
+      // get the metric
+      var metric = this.$metric_names[i];
+
+      // default y_axis options
+      var y_axis = {
+        tick: {
+          format: this.$y_tick_format
+        }
+      };
+      // special y-axis treatment for accuracy
+      if (this.$is_accuracy(metric)) {
+        y_axis.padding = {
+          top: 0
+        };
+      }
+
+      // create a chart wrapper div
+      var c3_div = document.createElement("div");
+      this.$container.appendChild(c3_div);
+
+      var chart = c3.generate({
+        bindto: c3_div,
+        axis: {
+          x: {
+            tick: {
+              values: this.$get_x_axis_ticks(this.$metrics)
+            }
+          },
+          y: y_axis
+        },
+        data: {
+          x: 'epoch',
+          columns: this.$chart_columns(metric, this.$metrics)
+        },
+        color: {
+          pattern: ['#42a5f5', '#66BB6A']
+        },
+        transition: {
+          duration: 20
+        }
+      });
+
+      // adjust axes
+      this.$adjust_axes(chart, metric, this.$metrics);
+
+      // track chart
+      this.$c3_charts.push(chart);
+
+    }
+
+    // auto update if appropriate
+    if (this.$update_url !== null && !this.$run_completed(this.$metrics) && (window.location.protocol !== "file"))
+      this.$auto_update();
+
+    // auto resize if requested
+    if (this.$auto_resize) {
+      window.setTimeout(function() { thiz.resize(); }, 200);
+      $(window).on('resize', function(e) {
+        if ($(thiz.$container).is(':visible'))
+          thiz.resize();
+      });
+      $(this.$container).visibilityChanged({
+        callback: function(element, visible) {
+          if (visible)
+            thiz.resize();
+        },
+        runOnLoad: false,
+        frequency: 100
+      });
+    }
+  };
+
+  // get the array of charts
+  this.charts = function() {
+    return this.$c3_charts;
+  };
+
+  // update with new data
+  this.update = function(data) {
+    for (var i = 0; i<this.$metric_names.length; i++) {
+      var metric = this.$metric_names[i];
+      var chart = this.$c3_charts[i];
+      chart.load({
+        x: 'epoch',
+        columns: this.$chart_columns(metric, data)
+      });
+      this.$adjust_axes(chart, metric, data);
+      // ensure repaint
+      chart.flush();
+    }
+  };
+
+  // resize charts to fit within their container
+  this.resize = function() {
+    var chart_height = this.$container.offsetHeight / this.$c3_charts.length;
+    for (var i = 0; i<this.$c3_charts.length; i++) {
+      var chart = this.$c3_charts[i];
+      var element = chart.element;
+      element.style.maxHeight = "none";
+      element.style.height = chart_height + "px";
+      var elementRect = element.getBoundingClientRect();
+      chart.resize({
+        height: elementRect.height,
+        width: elementRect.width
+      });
+    }
+  };
+
+
+  // periodically update metrics from a url
+  this.$auto_update = function() {
+    var updateInterval = setInterval(function() {
+      thiz.$load_metrics(function(data) {
+
+        // perform update
+        thiz.update(data);
+
+        // stop refreshing metrics when the run is completed
+        if (thiz.$run_completed(data))
+          clearInterval(updateInterval);
+      },
+      // error handler
+      function() {
+        clearInterval(updateInterval);
+      });
+    }, 1000);
+  };
+
+  // helper to determine whether we've seen all the data
+  this.$run_completed = function(data) {
+    return this.$get_current_epochs(data) >= this.$get_total_epochs(data);
+  };
+
+  // see how many total epochs there are
+  this.$get_total_epochs = function(data) {
+    var first_metric = data[this.$metric_names[0]];
+    return first_metric.length;
+  };
+
+  // see how many epochs are in the data
+  this.$get_current_epochs = function(data) {
+    var first_metric = data[this.$metric_names[0]];
+    for (var r = 0; r<first_metric.length; r++) {
+      if (first_metric[r] === null) {
+        break;
+      }
+    }
+    return r;
+  };
+
+  // determine whether a metric is 'accuracy'
+  this.$is_accuracy = function(metric) {
+    return metric === 'acc' || metric === 'accuracy';
+  };
+
+  // helper to format y tick marks. use the default
+  // d3 formatter but strip long sequences of zeros
+  // followed by a single digit at the end (result
+  // of JavaScript floating point rouning issues
+  // during axis interpolation)
+  var default_format = d3.format("");
+  this.$y_tick_format = function(d) {
+    var fmt = default_format(d);
+    if (fmt.indexOf('.') > -1)
+      return fmt.replace(/0{4,}[1-9]$/, '0');
+    else
+      return fmt;
+  };
+
+  // tweak chart y-axis
+  this.$adjust_axes = function(chart, metric, data) {
+
+    // adjust x-axis range
+    var epoch = this.$epoch_column(data);
+    var total_epochs = epoch[epoch.length - 1];
+    chart.axis.max({
+      x: total_epochs
+    });
+
+    // define new x axis tick generator
+    chart.internal.axis.getXAxisTickValues = function() {
+      return thiz.$get_x_axis_ticks(data);
+    }
+
+    // adjust y-axis range
+    var current_epochs = this.$get_current_epochs(data);
+    if (this.$is_accuracy(metric) && (current_epochs > 0))
+      chart.axis.max({
+        y: 1
+      });
+  };
+
+  // yield chart column data
+  this.$chart_columns = function(metric, data) {
+
+    var columns = [];
+
+    columns.push(
+      ['epoch'].concat(this.$epoch_column(data))
+    );
+
+    columns.push(
+      [metric].concat(data[metric])
+    );
+
+    var val_metric = "val_" + metric;
+    if (data.hasOwnProperty(val_metric)) {
+      columns.push(
+        [val_metric].concat(data[val_metric])
+      );
+    }
+
+    return columns;
+  };
+
+  this.$epoch_column = function(data) {
+    var epoch = data.epoch;
+    if (!epoch)
+      epoch = this.$x_axis_range(data[Object.keys(data)[0]].length);
+    return epoch;
+  }
+
+  this.$x_axis_range = function(size) {
+    var range = new Array(size);
+    for (var i = 1; i<=size; i++)
+      range[i-1] = i;
+    return range;
+  };
+
+
+  // load metrics from the update url
+  this.$load_metrics = function(callback, on_error) {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+    if (request.readyState === 4) {
+      if (request.status === 200 || request.status === 0) {
+        try {
+          var data = JSON.parse(request.responseText);
+          if (callback)
+            callback(data);
+        } catch(err) {
+          if (on_error)
+            on_error();
+        }
+      } else {
+        if (on_error)
+          on_error();
+      }
+    }
+    };
+    request.open('GET', this.$update_url);
+    request.setRequestHeader('Cache-Control', 'no-cache');
+    request.send();
+  };
+
+  // determine ticks for x-axis
+  this.$get_x_axis_ticks = function(data) {
+
+      // get the epoch column
+      var epoch = this.$epoch_column(data);
+      var total_epochs = epoch.length;
+
+      // if we are have less than 10 epochs we are done
+      var total_ticks = 10;
+      if (total_epochs <= total_ticks)
+        return epoch;
+
+      // otherwise, choose an appropriate increment and
+      // use that when drawing ticks
+      var logged = Math.log10(total_epochs);
+      var floor = Math.floor(logged);
+      var increment = Math.pow(10, floor - 1);
+
+      // adjust increment based on remainder
+      var diff = logged - floor;
+      if (diff < 0.1)
+        increment = increment * 1.0;
+      else if (diff < 0.2)
+        increment = increment * 2.0;
+      else
+        increment = increment * 5.0;
+
+      // draw the ticks
+      var ticks = [];
+      var current = increment;
+      while (current <= total_epochs) {
+        ticks.push(current);
+        current = current + increment;
+      }
+
+      // the ticks are used as indexes into epochs
+      var axis_ticks = [];
+      for (var i = 0; i<ticks.length; i++)
+        axis_ticks.push(epoch[ticks[i]-1]);
+      return axis_ticks;
+  }
+
+  // initialize
+  this.$initialize();
+}
+
+</script>
